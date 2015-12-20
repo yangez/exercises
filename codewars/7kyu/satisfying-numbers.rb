@@ -19,5 +19,5 @@ def smallest(n)
   end
 
   # whichever one can, that's your number
-  return potential
+  potential
 end
