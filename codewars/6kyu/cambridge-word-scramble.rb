@@ -1,5 +1,6 @@
 # http://www.codewars.com/kata/cambridge-word-scramble
 
+# Array version
 def mix_words(string)
   return if !string.instance_of? String
 
@@ -23,6 +24,7 @@ def mix_words(string)
       last = word_array.reverse!.shift
 
       # * scramble remaining letters until it doesn't equal original
+      # unless there's only one letter in the word like "cool"
       original = word_array.reverse.join
       loop do
         word_array.shuffle!
@@ -45,5 +47,11 @@ def mix_words(string)
   randomized.join " "
 
 end
+
+# gsub version
+def mix_words_gsub(string)
+  # todo
+end
+
 
 puts mix_words("Let's do some cool stuff together at Eric's house!")
