@@ -1,29 +1,38 @@
+# http://www.codewars.com/kata/cambridge-word-scramble
+
 def mix_words(string)
   return if !string.instance_of? String
 
   # Break string into array of different words
   randomized = string.split(" ").map do |word|
-    # Checks that string is more than 3 letters, if not just return string
+    if word.length <= 3 then word else
 
-    # * remove first and last letters
-    word_array = word.split //
-    first = word_array.shift
-    last = word_array.reverse!.shift
+      # * remove first and last letters
+      word_array = word.split //
+      first = word_array.shift
+      last = word_array.reverse!.shift
 
-    # * scramble remaining letters
-    word_array.shuffle!
+      original = word_array.reverse.join
 
-    # * add first and last letters back
-    word_array.unshift first
-    word_array << last
+      # * scramble remaining letters until it doesn't equal original
 
-    word_array.join
+      loop do
+        word_array.shuffle!
+        break if word_array.join != original || word_array.uniq.length == 1
+      end
 
-    # check that string isn't the original string
+      # * add first and last letters back
+      word_array.unshift first
+      word_array << last
+
+      word_array.join
+
+    end
+
   end
 
   randomized.join " "
 
 end
 
-puts mix_words("hello world awesomesauce lol")
+puts mix_words("hello world awesomesauce")
