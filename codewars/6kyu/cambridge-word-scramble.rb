@@ -50,8 +50,9 @@ end
 
 # gsub version
 def mix_words_gsub(string)
-  # todo
+  string.gsub(/(\w)(\w+)(\w)/) do |match|
+    $1 + $2.chars.shuffle.join + $3
+  end
 end
 
-
-puts mix_words("Let's do some cool stuff together at Eric's house!")
+puts mix_words_gsub("Let's do some cool stuff together at Eric's house!")
